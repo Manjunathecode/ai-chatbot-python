@@ -1,0 +1,383 @@
+{
+    "intents": [
+        {
+            "tag": "greeting",
+            "patterns": [
+                "Hello",
+                "Hi",
+                "Hey",
+                "Good morning",
+                "Good evening",
+                "Whats up",
+                "How are you",
+                "hi there",
+                "hello there",
+                "hey there",
+                "good afternoon",
+                "greetings",
+                "sup"
+            ],
+            "responses": [
+                "Hello! Welcome to our support center. How can I help you today?",
+                "Hi there! How can I assist you?",
+                "Hey! What can I do for you today?"
+            ]
+        },
+        {
+            "tag": "goodbye",
+            "patterns": [
+                "Bye",
+                "Goodbye",
+                "See you",
+                "Take care",
+                "Exit",
+                "Quit",
+                "bye bye",
+                "see you later",
+                "good night",
+                "talk later"
+            ],
+            "responses": [
+                "Goodbye! Have a great day!",
+                "Thank you for contacting us. Goodbye!",
+                "Take care! Feel free to come back anytime!"
+            ]
+        },
+        {
+            "tag": "thanks",
+            "patterns": [
+                "Thank you",
+                "Thanks",
+                "That was helpful",
+                "Great help",
+                "Awesome",
+                "thank you so much",
+                "thanks a lot",
+                "many thanks",
+                "appreciated"
+            ],
+            "responses": [
+                "You're welcome!",
+                "Happy to help!",
+                "Glad I could assist you!"
+            ]
+        },
+        {
+            "tag": "order_status",
+            "patterns": [
+                "Where is my order",
+                "Track my order",
+                "Order status",
+                "When will my order arrive",
+                "Order not received",
+                "Check my order",
+                "track order",
+                "where is my package",
+                "order tracking",
+                "my order",
+                "check order status"
+            ],
+            "responses": [
+                "Please provide your order ID and I will check the status for you.",
+                "You can track your order using the tracking link sent to your email.",
+                "Our delivery team will update you within 24 hours about your order status."
+            ]
+        },
+        {
+            "tag": "cancel_order",
+            "patterns": [
+                "Cancel my order",
+                "I want to cancel",
+                "Stop my order",
+                "Order cancellation",
+                "How to cancel order",
+                "cancel order",
+                "order cancel",
+                "want to cancel my order"
+            ],
+            "responses": [
+                "Orders can be cancelled within 24 hours of placing. Please share your order ID.",
+                "To cancel your order please visit My Orders section in the app.",
+                "I will raise a cancellation request for you. Please provide your order ID."
+            ]
+        },
+        {
+            "tag": "refund",
+            "patterns": [
+                "Refund status",
+                "Where is my refund",
+                "Money not refunded",
+                "Refund not received",
+                "When will I get refund",
+                "refund please",
+                "i want refund",
+                "get my money back",
+                "money back",
+                "refund my money"
+            ],
+            "responses": [
+                "Refunds are processed within 5-7 business days to your original payment method.",
+                "Please share your order ID and I will check the refund status for you.",
+                "Refunds once initiated take 3-5 working days to reflect in your account."
+            ]
+        },
+        {
+            "tag": "payment_issue",
+            "patterns": [
+                "Payment failed",
+                "Money deducted but order not placed",
+                "Payment not successful",
+                "Unable to pay",
+                "Transaction failed",
+                "payment problem",
+                "payment error",
+                "cant pay",
+                "payment issue",
+                "transaction error",
+                "money deducted"
+            ],
+            "responses": [
+                "If money was deducted but order not placed, it will be refunded within 24 hours.",
+                "Please try a different payment method or clear your browser cache and try again.",
+                "Our payment team is available 24/7. Please share your transaction ID for help."
+            ]
+        },
+        {
+            "tag": "bank_balance",
+            "patterns": [
+                "Check my balance",
+                "Account balance",
+                "How much money in my account",
+                "Bank balance inquiry",
+                "what is my balance",
+                "balance check",
+                "my balance",
+                "show balance",
+                "Banking",
+                "bank",
+                "account balance check",
+                "how much is in my account",
+                "account",
+                "check account",
+                "bank account"
+            ],
+            "responses": [
+                "You can check your balance by logging into your net banking or mobile banking app.",
+                "Dial our balance inquiry number 1800-XXX-XXXX to check your balance.",
+                "SMS BAL to 12345 from your registered mobile number to get your balance."
+            ]
+        },
+        {
+            "tag": "block_card",
+            "patterns": [
+                "Block my card",
+                "Lost my card",
+                "Card stolen",
+                "Debit card block",
+                "Credit card lost",
+                "Block debit card",
+                "block card",
+                "card lost",
+                "stolen card",
+                "freeze my card",
+                "card blocked"
+            ],
+            "responses": [
+                "For emergency card blocking call our 24/7 helpline: 1800-XXX-XXXX immediately.",
+                "You can block your card instantly through our mobile banking app under Card Settings.",
+                "I have raised an emergency card block request. A new card will be delivered in 5-7 days."
+            ]
+        },
+        {
+            "tag": "book_appointment",
+            "patterns": [
+                "Book appointment",
+                "Schedule appointment",
+                "See a doctor",
+                "Doctor appointment",
+                "Book doctor visit",
+                "Hospital appointment",
+                "book a doctor",
+                "appointment booking",
+                "need doctor",
+                "consult doctor",
+                "hospital booking",
+                "Hospital",
+                "hospital",
+                "when will get appointment",
+                "when will i get appointment",
+                "appointment status",
+                "when is my appointment",
+                "confirm appointment",
+                "appointment confirmation",
+                "when appointment",
+                "get appointment"
+            ],
+            "responses": [
+                "You can book an appointment through our website or call 1800-XXX-XXXX.",
+                "Our doctors are available Monday to Saturday 9AM to 6PM. Shall I book a slot?",
+                "Please provide your preferred date and department for booking an appointment.",
+                "Your appointment will be confirmed within 24 hours via SMS and email."
+            ]
+        }
+        {
+            "tag": "doctor_availability",
+            "patterns": [
+                "Is doctor available",
+                "Doctor timings",
+                "When is doctor available",
+                "Doctor schedule",
+                "Check doctor availability",
+                "doctor available",
+                "doctor timing",
+                "when can i see doctor"
+            ],
+            "responses": [
+                "Our doctors are available Monday to Saturday from 9AM to 6PM.",
+                "Emergency services are available 24/7 at our hospital.",
+                "Please specify the department and I will check doctor availability for you."
+            ]
+        },
+        {
+            "tag": "reset_password",
+            "patterns": [
+                "Reset password",
+                "Forgot password",
+                "Cannot login",
+                "Password not working",
+                "Change password",
+                "Login issue",
+                "cant login",
+                "password reset",
+                "forgot my password",
+                "login problem",
+                "unable to login"
+            ],
+            "responses": [
+                "Click on Forgot Password on the login page and follow the instructions.",
+                "A password reset link will be sent to your registered email address.",
+                "If you are unable to reset password please call our tech support at 1800-XXX-XXXX."
+            ]
+        },
+        {
+            "tag": "app_issue",
+            "patterns": [
+                "App not working",
+                "App crashed",
+                "App is slow",
+                "Cannot open app",
+                "App error",
+                "Application not responding",
+                "app problem",
+                "app issue",
+                "app crash",
+                "app freezing",
+                "application error"
+            ],
+            "responses": [
+                "Please try clearing the app cache and restart the application.",
+                "Update the app to the latest version from Play Store or App Store.",
+                "If the issue persists please uninstall and reinstall the application."
+            ]
+        },
+        {
+            "tag": "delivery_delay",
+            "patterns": [
+                "Order is late",
+                "Delivery delayed",
+                "Package not arrived",
+                "Shipment delayed",
+                "Late delivery",
+                "delivery late",
+                "where is my delivery",
+                "delayed shipment",
+                "package delayed",
+                "order not delivered"
+            ],
+            "responses": [
+                "We apologize for the delay. Our logistics team is working to deliver your order as soon as possible.",
+                "Delays can happen due to weather or high demand. Your order will arrive within 24-48 hours.",
+                "Please share your order ID and I will escalate this to our delivery team immediately."
+            ]
+        },
+        {
+            "tag": "contact_agent",
+            "patterns": [
+                "Talk to agent",
+                "Human support",
+                "Speak to person",
+                "Connect to executive",
+                "I need human help",
+                "Customer care",
+                "speak to human",
+                "real person",
+                "live agent",
+                "customer support",
+                "help me"
+            ],
+            "responses": [
+                "Connecting you to a live agent. Please wait for a moment.",
+                "Our customer care number is 1800-XXX-XXXX available 24/7.",
+                "You can also reach us at support@company.com for detailed assistance."
+            ]
+        },
+        {
+            "tag": "return_product",
+            "patterns": [
+                "Return product",
+                "I want to return",
+                "Product return",
+                "How to return",
+                "Return policy",
+                "Send back product",
+                "return item",
+                "send back",
+                "return this product"
+            ],
+            "responses": [
+                "Products can be returned within 7 days of delivery. Visit My Orders to initiate return.",
+                "Our return policy allows returns within 7 days for most products.",
+                "Please share your order ID to initiate the return process."
+            ]
+        },
+        {
+            "tag": "offers",
+            "patterns": [
+                "Any offers",
+                "Discount available",
+                "Coupon code",
+                "Promo code",
+                "Current deals",
+                "Best offers today",
+                "any deals",
+                "discount code",
+                "offers available",
+                "sale"
+            ],
+            "responses": [
+                "Check our Offers section in the app for latest deals and discounts.",
+                "Use code SAVE20 to get 20% off on your next order!",
+                "Subscribe to our newsletter to get exclusive offers directly in your inbox."
+            ]
+        },
+        {
+            "tag": "working_hours",
+            "patterns": [
+                "Working hours",
+                "Support timing",
+                "When are you open",
+                "Business hours",
+                "What time do you open",
+                "opening hours",
+                "timings",
+                "are you open",
+                "support hours"
+            ],
+            "responses": [
+                "Our customer support is available 24/7 for your assistance.",
+                "Our physical stores are open Monday to Saturday 10AM to 8PM.",
+                "Online support is available round the clock. We are always here to help!"
+            ]
+        }
+    ]
+}
