@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intent-Based Support Chatbot Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0d1117, #1a1a2e);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ── LOGIN PAGE ── */
+        #login-page {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border: 1px solid #0f3460;
+            border-radius: 24px;
+            padding: 50px 40px;
+            width: 420px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+            text-align: center;
+        }
+
+        #login-page h1 {
+            color: #00d4ff;
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        #login-page p {
+            color: #a0a0b0;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+            text-align: left;
+        }
+
+        .input-group label {
+            color: #a0a0b0;
+            font-size: 13px;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 16px;
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            color: #c9d1d9;
+            font-size: 14px;
+            outline: none;
+            transition: border 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: #00d4ff;
+        }
+
+        .error-msg {
+            color: #ff6b6b;
+            font-size: 13px;
+            margin-bottom: 12px;
+            min-height: 20px;
+        }
+
+        .demo-notice {
+            margin: 0 0 20px;
+            padding: 12px 14px;
+            border: 1px solid #5b4a16;
+            border-radius: 10px;
+            background: #29230f;
+            color: #f4d35e;
+            font-size: 12px;
+            line-height: 1.5;
+            text-align: left;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+
+        /* ── CHAT PAGE ── */
+        #chat-page {
+            display: none;
+            width: 100%;
+            max-width: 800px;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .chat-header {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border-bottom: 1px solid #0f3460;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chat-header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .bot-avatar {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+
+        .chat-header h2 {
+            color: #00d4ff;
+            font-size: 18px;
+        }
+
+        .chat-header p {
+            color: #8b949e;
+            font-size: 12px;
+        }
+
+        .header-btns {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-small {
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: none;
+            font-size: 13px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+
+        .btn-clear {
+            background: #21262d;
+            color: #c9d1d9;
+            border: 1px solid #30363d;
+        }
+
+        .btn-logout {
+            background: #3d1515;
+            color: #ff6b6b;
+            border: 1px solid #6b2525;
+        }
+
+        .btn-small:hover {
+            opacity: 0.8;
+        }
+
+        /* Chat Area */
+        .chat-area {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .chat-area::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .chat-area::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .chat-area::-webkit-scrollbar-thumb {
+            background: #30363d;
+            border-radius: 4px;
+        }
+
+        /* Messages */
+        .msg-wrapper {
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+        }
+
+        .msg-wrapper.user {
+            flex-direction: row-reverse;
+        }
+
+        .msg-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .bot-msg-avatar {
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+        }
+
+        .user-msg-avatar {
+            background: linear-gradient(135deg, #7b2fff, #5a1fcc);
+        }
+
+        .msg-bubble {
+            max-width: 70%;
+            padding: 12px 18px;
+            border-radius: 18px;
+            font-size: 14px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        .bot-bubble {
+            background: linear-gradient(135deg, #1e2a3a, #243447);
+            color: #e0e0e0;
+            border: 1px solid #2e4057;
+            border-bottom-left-radius: 4px;
+        }
+
+        .user-bubble {
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .msg-time {
+            font-size: 11px;
+            color: #8b949e;
+            margin-top: 4px;
+            text-align: right;
+        }
+
+        .msg-meta {
+            margin-top: 5px;
+            color: #8b949e;
+            font-size: 11px;
+        }
+
+        .bot-time {
+            text-align: left;
+        }
+
+        /* Typing Indicator */
+        .typing {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 12px 18px;
+            background: #1e2a3a;
+            border-radius: 18px;
+            border-bottom-left-radius: 4px;
+            width: fit-content;
+            border: 1px solid #2e4057;
+        }
+
+        .typing span {
+            width: 8px;
+            height: 8px;
+            background: #00d4ff;
+            border-radius: 50%;
+            animation: bounce 1.2s infinite;
+        }
+
+        .typing span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            60%,
+            100% {
+                transform: translateY(0);
+            }
+
+            30% {
+                transform: translateY(-6px);
+            }
+        }
+
+        /* Input Area */
+        .chat-input-area {
+            padding: 16px 20px;
+            background: #161b22;
+            border-top: 1px solid #21262d;
+        }
+
+        .hints {
+            text-align: center;
+            color: #8b949e;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .input-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        #msg-input {
+            flex: 1;
+            padding: 13px 18px;
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 25px;
+            color: #c9d1d9;
+            font-size: 14px;
+            outline: none;
+            transition: border 0.3s;
+        }
+
+        #msg-input:focus {
+            border-color: #00d4ff;
+        }
+
+        #send-btn {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            transition: opacity 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #send-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            #login-page {
+                width: 90%;
+                padding: 30px 20px;
+            }
+
+            .msg-bubble {
+                max-width: 85%;
+            }
+
+            .chat-header h2 {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ── LOGIN PAGE ── -->
+    <div id="login-page">
+        <h1>🤖 Intent Support Demo</h1>
+        <p>TF-IDF + MLP intent classification</p>
+
+        <div class="demo-notice">
+            Portfolio demonstration only. No real order, banking, healthcare, payment, or live-agent
+            system is connected. Use a fictional alias and do not enter personal or account data.
+        </div>
+
+        <div class="input-group">
+            <label>👤 Demo name or alias</label>
+            <input type="text" id="name-input" maxlength="50" placeholder="Demo User">
+        </div>
+
+        <div class="error-msg" id="error-msg"></div>
+
+        <button class="btn-primary" onclick="login()">Start Chat →</button>
+    </div>
+
+    <!-- ── CHAT PAGE ── -->
+    <div id="chat-page">
+
+        <!-- Header -->
+        <div class="chat-header">
+            <div class="chat-header-left">
+                <div class="bot-avatar">🤖</div>
+                <div>
+                    <h2>Intent-Based Support Chatbot</h2>
+                    <p id="user-info">Portfolio demo • No external systems</p>
+                </div>
+            </div>
+            <div class="header-btns">
+                <button class="btn-small btn-clear" onclick="clearChat()">🗑️ Clear</button>
+                <button class="btn-small btn-logout" onclick="logout()">🚪 Logout</button>
+            </div>
+        </div>
+
+        <!-- Chat Area -->
+        <div class="chat-area" id="chat-area"></div>
+
+        <!-- Input Area -->
+        <div class="chat-input-area">
+            <div class="hints">
+                💡 Try fictional prompts: Track my order | Payment failed | Reset password | App is not working
+            </div>
+            <div class="input-row">
+                <input type="text" id="msg-input" placeholder="Type your message..."
+                    onkeypress="if(event.key==='Enter') sendMessage()">
+                <button id="send-btn" onclick="sendMessage()">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let userName = '';
+
+        function getTime() {
+            return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        }
+
+        function createTextElement(tag, className, text) {
+            const element = document.createElement(tag);
+            element.className = className;
+            element.textContent = text;
+            return element;
+        }
+
+        function addMessage(text, type, meta = '') {
+            const area = document.getElementById('chat-area');
+            const wrapper = document.createElement('div');
+            wrapper.className = `msg-wrapper ${type === 'user' ? 'user' : ''}`.trim();
+
+            const avatarClass = type === 'user' ? 'user-msg-avatar' : 'bot-msg-avatar';
+            const avatar = createTextElement('div', `msg-avatar ${avatarClass}`, type === 'user' ? '👤' : '🤖');
+            const content = document.createElement('div');
+            const bubbleClass = type === 'user' ? 'user-bubble' : 'bot-bubble';
+            content.appendChild(createTextElement('div', `msg-bubble ${bubbleClass}`, text));
+            if (meta) content.appendChild(createTextElement('div', 'msg-meta', meta));
+            content.appendChild(createTextElement('div', `msg-time ${type === 'bot' ? 'bot-time' : ''}`, getTime()));
+
+            wrapper.appendChild(avatar);
+            wrapper.appendChild(content);
+            area.appendChild(wrapper);
+            area.scrollTop = area.scrollHeight;
+        }
+
+        function addBotMessage(text, meta = '') {
+            addMessage(text, 'bot', meta);
+        }
+
+        function addUserMessage(text) {
+            addMessage(text, 'user');
+        }
+
+        function showTyping() {
+            const area = document.getElementById('chat-area');
+            const wrapper = document.createElement('div');
+            wrapper.className = 'msg-wrapper';
+            wrapper.id = 'typing-indicator';
+            wrapper.appendChild(createTextElement('div', 'msg-avatar bot-msg-avatar', '🤖'));
+            const typing = document.createElement('div');
+            typing.className = 'typing';
+            for (let i = 0; i < 3; i += 1) typing.appendChild(document.createElement('span'));
+            wrapper.appendChild(typing);
+            area.appendChild(wrapper);
+            area.scrollTop = area.scrollHeight;
+        }
+
+        function removeTyping() {
+            const typing = document.getElementById('typing-indicator');
+            if (typing) typing.remove();
+        }
+
+        function login() {
+            const name = document.getElementById('name-input').value;
+            fetch('/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ display_name: name })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        userName = name;
+                        document.getElementById('login-page').style.display = 'none';
+                        document.getElementById('chat-page').style.display = 'flex';
+                        document.getElementById('user-info').textContent = `${name} • Demo session`;
+                        addBotMessage(data.message);
+                    } else {
+                        document.getElementById('error-msg').textContent = data.message;
+                    }
+                });
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('msg-input');
+            const message = input.value.trim();
+            if (!message) return;
+
+            addUserMessage(message);
+            input.value = '';
+            showTyping();
+
+            setTimeout(() => {
+                fetch('/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message })
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        removeTyping();
+                        const confidence = Number(data.confidence).toFixed(1);
+                        addBotMessage(data.response, `Intent: ${data.intent} • Confidence: ${confidence}%`);
+                    })
+                    .catch(() => {
+                        removeTyping();
+                        addBotMessage('The local demo could not process that request. Please try again.');
+                    });
+            }, 800);
+        }
+
+        function clearChat() {
+            document.getElementById('chat-area').innerHTML = '';
+            addBotMessage(`Chat cleared. What fictional support question would you like to try, ${userName}?`);
+        }
+
+        function logout() {
+            fetch('/logout', { method: 'POST' })
+                .then(() => {
+                    document.getElementById('chat-page').style.display = 'none';
+                    document.getElementById('login-page').style.display = 'block';
+                    document.getElementById('chat-area').innerHTML = '';
+                    document.getElementById('name-input').value = '';
+                    document.getElementById('error-msg').textContent = '';
+                });
+        }
+    </script>
+
+</body>
+
+</html>

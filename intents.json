@@ -18,9 +18,9 @@
                 "sup"
             ],
             "responses": [
-                "Hello! Welcome to our support center. How can I help you today?",
-                "Hi there! How can I assist you?",
-                "Hey! What can I do for you today?"
+                "Hello! This is a portfolio support-chatbot demo. What would you like to try?",
+                "Hi there! Ask a fictional support question to see intent classification in action.",
+                "Hey! I can demonstrate support intents such as orders, payments, appointments, and basic troubleshooting."
             ]
         },
         {
@@ -39,8 +39,8 @@
             ],
             "responses": [
                 "Goodbye! Have a great day!",
-                "Thank you for contacting us. Goodbye!",
-                "Take care! Feel free to come back anytime!"
+                "Thanks for trying the chatbot demo. Goodbye!",
+                "Take care! You can return whenever you want to test another sample intent."
             ]
         },
         {
@@ -59,7 +59,7 @@
             "responses": [
                 "You're welcome!",
                 "Happy to help!",
-                "Glad I could assist you!"
+                "Glad the demonstration was useful!"
             ]
         },
         {
@@ -78,9 +78,9 @@
                 "check order status"
             ],
             "responses": [
-                "Please provide your order ID and I will check the status for you.",
-                "You can track your order using the tracking link sent to your email.",
-                "Our delivery team will update you within 24 hours about your order status."
+                "Demo guidance: a real support system could look up an order after secure authentication.",
+                "This portfolio demo does not connect to an order database or accept real order identifiers.",
+                "In a production workflow, an authenticated tracking page would provide the latest order status."
             ]
         },
         {
@@ -96,9 +96,9 @@
                 "want to cancel my order"
             ],
             "responses": [
-                "Orders can be cancelled within 24 hours of placing. Please share your order ID.",
-                "To cancel your order please visit My Orders section in the app.",
-                "I will raise a cancellation request for you. Please provide your order ID."
+                "Demo guidance: a production app could offer cancellation from an authenticated Orders page.",
+                "No cancellation is submitted here because this demo is not connected to an order system.",
+                "For a real purchase, use the merchant's official cancellation process and policy."
             ]
         },
         {
@@ -116,9 +116,9 @@
                 "refund my money"
             ],
             "responses": [
-                "Refunds are processed within 5-7 business days to your original payment method.",
-                "Please share your order ID and I will check the refund status for you.",
-                "Refunds once initiated take 3-5 working days to reflect in your account."
+                "Demo guidance: refund timing depends on the merchant and payment provider's actual policy.",
+                "This demo cannot inspect transactions or refund status; use the provider's authenticated support channel.",
+                "Never enter real payment details into this portfolio demonstration."
             ]
         },
         {
@@ -137,9 +137,9 @@
                 "money deducted"
             ],
             "responses": [
-                "If money was deducted but order not placed, it will be refunded within 24 hours.",
-                "Please try a different payment method or clear your browser cache and try again.",
-                "Our payment team is available 24/7. Please share your transaction ID for help."
+                "Demo guidance: check the official payment status before retrying to avoid duplicate charges.",
+                "For a real payment problem, contact the merchant or bank through its verified support channel.",
+                "Do not provide card numbers, PINs, OTPs, or real transaction details in this demo."
             ]
         },
         {
@@ -162,9 +162,9 @@
                 "bank account"
             ],
             "responses": [
-                "You can check your balance by logging into your net banking or mobile banking app.",
-                "Dial our balance inquiry number 1800-XXX-XXXX to check your balance.",
-                "SMS BAL to 12345 from your registered mobile number to get your balance."
+                "Demo guidance: check balances only through your bank's verified website, app, ATM, or official support channel.",
+                "This chatbot has no banking connection and cannot view account balances.",
+                "Never share an account number, PIN, password, card number, or OTP with this demo."
             ]
         },
         {
@@ -183,9 +183,9 @@
                 "card blocked"
             ],
             "responses": [
-                "For emergency card blocking call our 24/7 helpline: 1800-XXX-XXXX immediately.",
-                "You can block your card instantly through our mobile banking app under Card Settings.",
-                "I have raised an emergency card block request. A new card will be delivered in 5-7 days."
+                "For a real lost card, immediately use your issuer's verified app, website, or official number.",
+                "This demo cannot block cards or contact a bank.",
+                "Never share a full card number, PIN, password, CVV, or OTP here."
             ]
         },
         {
@@ -214,12 +214,11 @@
                 "get appointment"
             ],
             "responses": [
-                "You can book an appointment through our website or call 1800-XXX-XXXX.",
-                "Our doctors are available Monday to Saturday 9AM to 6PM. Shall I book a slot?",
-                "Please provide your preferred date and department for booking an appointment.",
-                "Your appointment will be confirmed within 24 hours via SMS and email."
+                "Demo guidance: a real healthcare portal could offer appointment booking after secure authentication.",
+                "No appointment is created by this portfolio demo.",
+                "For actual care, use a verified provider channel; seek local emergency help for urgent symptoms."
             ]
-        }
+        },
         {
             "tag": "doctor_availability",
             "patterns": [
@@ -233,9 +232,9 @@
                 "when can i see doctor"
             ],
             "responses": [
-                "Our doctors are available Monday to Saturday from 9AM to 6PM.",
-                "Emergency services are available 24/7 at our hospital.",
-                "Please specify the department and I will check doctor availability for you."
+                "This demo has no live clinician schedule or healthcare-provider connection.",
+                "Check a verified provider's official channel for current availability.",
+                "For urgent medical needs, contact the appropriate local emergency service."
             ]
         },
         {
@@ -254,9 +253,9 @@
                 "unable to login"
             ],
             "responses": [
-                "Click on Forgot Password on the login page and follow the instructions.",
-                "A password reset link will be sent to your registered email address.",
-                "If you are unable to reset password please call our tech support at 1800-XXX-XXXX."
+                "Demo guidance: use the official application's Forgot Password flow.",
+                "Verify the domain before opening a reset link, and never share a reset code or password.",
+                "This portfolio chatbot cannot access accounts or send password-reset links."
             ]
         },
         {
@@ -275,9 +274,9 @@
                 "application error"
             ],
             "responses": [
-                "Please try clearing the app cache and restart the application.",
-                "Update the app to the latest version from Play Store or App Store.",
-                "If the issue persists please uninstall and reinstall the application."
+                "Demo guidance: restart the application and record the exact error before changing settings.",
+                "Check the application's verified release channel for supported updates.",
+                "If the issue persists, review official support documentation before reinstalling or clearing data."
             ]
         },
         {
@@ -295,9 +294,9 @@
                 "order not delivered"
             ],
             "responses": [
-                "We apologize for the delay. Our logistics team is working to deliver your order as soon as possible.",
-                "Delays can happen due to weather or high demand. Your order will arrive within 24-48 hours.",
-                "Please share your order ID and I will escalate this to our delivery team immediately."
+                "Demo guidance: check the merchant's authenticated tracking page for current delivery information.",
+                "This demo cannot estimate delivery time or contact a logistics provider.",
+                "Do not enter a real order ID; use the seller's verified support channel for escalation."
             ]
         },
         {
@@ -316,9 +315,9 @@
                 "help me"
             ],
             "responses": [
-                "Connecting you to a live agent. Please wait for a moment.",
-                "Our customer care number is 1800-XXX-XXXX available 24/7.",
-                "You can also reach us at support@company.com for detailed assistance."
+                "This portfolio demo is not connected to a live-agent service.",
+                "A production system could route this intent to an authenticated support queue.",
+                "For real assistance, use the relevant organization's verified contact page."
             ]
         },
         {
@@ -335,9 +334,9 @@
                 "return this product"
             ],
             "responses": [
-                "Products can be returned within 7 days of delivery. Visit My Orders to initiate return.",
-                "Our return policy allows returns within 7 days for most products.",
-                "Please share your order ID to initiate the return process."
+                "Demo guidance: return eligibility depends on the merchant's published policy.",
+                "No return is initiated here because this demo is not connected to a commerce system.",
+                "Use the merchant's authenticated Orders page for a real return request."
             ]
         },
         {
@@ -355,9 +354,9 @@
                 "sale"
             ],
             "responses": [
-                "Check our Offers section in the app for latest deals and discounts.",
-                "Use code SAVE20 to get 20% off on your next order!",
-                "Subscribe to our newsletter to get exclusive offers directly in your inbox."
+                "Demo guidance: a production assistant could retrieve verified offers from a commerce service.",
+                "No promotion or discount code shown by this demo should be treated as real.",
+                "Check the relevant organization's official site for current offers."
             ]
         },
         {
@@ -374,9 +373,9 @@
                 "support hours"
             ],
             "responses": [
-                "Our customer support is available 24/7 for your assistance.",
-                "Our physical stores are open Monday to Saturday 10AM to 8PM.",
-                "Online support is available round the clock. We are always here to help!"
+                "This portfolio demo has no real business hours or support operation.",
+                "A production assistant could retrieve verified hours from an approved source.",
+                "Check the relevant organization's official channel for current opening hours."
             ]
         }
     ]
